@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NotificacionesPush</string>
+
+    <string name="bt_token">token</string>
 </resources>
