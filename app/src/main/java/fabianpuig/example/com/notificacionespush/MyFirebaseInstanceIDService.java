@@ -21,6 +21,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
         String token = FirebaseInstanceId.getInstance().getToken();
 
-        Log.i("test", "Token actualizado: " + token );
+        Log.i(Controller.tag, "Token actualizado: " + token );
     }
 }
