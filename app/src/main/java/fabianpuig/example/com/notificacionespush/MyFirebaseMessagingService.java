@@ -3,6 +3,7 @@ package fabianpuig.example.com.notificacionespush;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -19,6 +20,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
+        // Los mensajes mixtos pasaran por los 2 metodos
+
+        // Mensaje con carga de notificación
         if (remoteMessage.getNotification() != null) {
 
             String titulo = remoteMessage.getNotification().getTitle();
@@ -26,6 +30,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             //Mostramos la notificación en la barra de estado
             showNotification(titulo, texto);
+        }
+        // Mensaje con carga de datos
+        if(remoteMessage.getData() != null) {
+
+            //log solo por testeo
+            Log.i( Controller.tag, "Usuario: " + remoteMessage.getData().get( "usuario" ) );
+
         }
     }
 
