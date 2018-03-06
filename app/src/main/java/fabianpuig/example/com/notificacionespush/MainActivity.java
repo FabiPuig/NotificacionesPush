@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView tvUser;
     private Button btToken;
 
     @Override
@@ -17,7 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvUser = findViewById( R.id.tv_usuario );
         btToken = findViewById( R.id.bt_token );
+
+        Bundle bundle = getIntent().getExtras();
+        if( bundle != null ){
+            tvUser.setText( bundle.getString( "usuario" ) );
+        }
+
         btToken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
